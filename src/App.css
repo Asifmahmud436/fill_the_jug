@@ -50,3 +50,12 @@
   align-items: end;
 
 }
+.jug button{
+  display: block;
+}
+.water-amount{
+  margin: 30px;
+  font-weight: 600;
+  font-size: 2rem;
+  
+}

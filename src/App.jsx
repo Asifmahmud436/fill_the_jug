@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { nanoid } from 'nanoid'
 
 import './App.css'
 
 function App() {
   const [height,setHeight] = useState(0)
+  const [water,setWater] = useState(0)
+
+  useEffect(()=>{
+    let waterVal = Math.floor(height*(1/6))
+    setWater(waterVal)
+  },[height])
+
+  const waterEl = <div className='water-amount'>{water}%</div>
 
   function increaseWater(){
     if(height!=600){
@@ -19,20 +27,28 @@ function App() {
   return (
     <>
       <div className='jug'>
-        
-        
-      <div
+        <div className='water' 
         style={{
-          backgroundColor: 'white',
-          width: "200px",
-          height: height+'px',
-        }}
-        className='water'
-      ></div>
+          backgroundColor :'white',
+          height:height+'px',
+          width:'200px'
+          // backgroundColor :'white',
+        }}>  
+        </div>
         
       </div>
+
+      {/* water percentage */}
+      <div>
+        {waterEl}
+      </div>
+      <div style={{
+        display:'block'
+      }}>
       <button onClick={increaseWater}>Increase</button>
       <button onClick={decreaseWater}>Decrease</button>
+      </div>
+      
     </>
   )
 }
